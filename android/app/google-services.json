@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "398828447616",
+    "project_id": "zef-a002",
+    "storage_bucket": "zef-a002.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398828447616:android:32dfa88fac00ae13290365",
+        "android_client_info": {
+          "package_name": "com.example.dietapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398828447616-forl6919i171ui5msdcth0fnqkna32sk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmKVVc05J6c5a9sMlkcBg9Skwhvlizlek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398828447616-forl6919i171ui5msdcth0fnqkna32sk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "398828447616-0ircvjf1q3fkbvmm5umue3c40nag52od.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.economyCondition.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398828447616:android:9800a568224860d4290365",
+        "android_client_info": {
+          "package_name": "com.example.economy_condition"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398828447616-forl6919i171ui5msdcth0fnqkna32sk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmKVVc05J6c5a9sMlkcBg9Skwhvlizlek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398828447616-forl6919i171ui5msdcth0fnqkna32sk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "398828447616-0ircvjf1q3fkbvmm5umue3c40nag52od.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.economyCondition.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
