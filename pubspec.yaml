@@ -7,15 +7,24 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
+  blurrycontainer: ^1.0.2
   cloud_firestore: ^4.8.3
   firebase_auth: ^4.7.1
   firebase_core: ^2.15.0
   fl_chart: ^0.63.0
+  flex_color_scheme: ^7.0.5
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  flutter_speed_dial: ^7.0.0
+  get: ^4.6.5
   google_fonts: ^5.1.0
+  intl: ^0.18.1
   line_chart: ^1.1.11
-  syncfusion_flutter_charts: ^22.1.39
+  liquid_swipe: ^3.1.0
+  smooth_page_indicator: ^1.1.0
+  syncfusion_flutter_charts: ^22.2.5
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_test:
@@ -47,3 +56,16 @@ flutter:
           weight: 800
         - asset: assets/fonts/Pretendard-Black.ttf
           weight: 900
+    - family: GmarketSansTTF
+      fonts:
+        - asset: assets/fonts/gmarket/GmarketSansTTFLight.ttf
+          weight: 300
+        - asset: assets/fonts/gmarket/GmarketSansTTFMedium.ttf
+          weight: 500
+        - asset: assets/fonts/gmarket/GmarketSansTTFBold.ttf
+          weight: 700
+flutter_icons:
+  ios: true
+  android: true
+  image_path: "assets/images/app_icon.png"
+  remove_alpha_ios: true

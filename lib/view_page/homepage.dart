@@ -1,9 +1,12 @@
 import 'package:economy_condition/components/consonents.dart';
+import 'package:economy_condition/view_page/summary_page.dart';
+import 'package:economy_condition/view_page/tradeBalance.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
-import '../add_page/add_interest_rate.dart';
 import 'interest_rate.dart';
+import 'loan.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,26 +30,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor,
-      appBar: AppBar(title: const Text('주요 경제 지표'), actions: [
-        IconButton(
-          icon: const Icon(Icons.logout),
-          onPressed: () {
-            signOut();
-          },
-        )
-      ]),
       body: getPage(),
+
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 16,
         unselectedFontSize: 14,
         selectedItemColor: mainColor,
         type: BottomNavigationBarType.fixed,
         items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "요약"),
           BottomNavigationBarItem(icon: Icon(Icons.stacked_line_chart_rounded), label: "금리&CPI"),
           BottomNavigationBarItem(icon: Icon(Icons.bar_chart_rounded), label: "가계대출"),
           BottomNavigationBarItem(icon: Icon(Icons.sailing_outlined), label: "수출통계"),
-          BottomNavigationBarItem(icon: Icon(Icons.house_outlined), label: "부동산통계"),
         ],
         currentIndex: currentIndex,
         onTap: (idx) {
@@ -56,75 +51,47 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: mainColor,
-        foregroundColor: Colors.black,
-        onPressed: () {
-          showModalBottomSheet(
-              context: context,
-              // backgroundColor: Colors.white,
-              builder: (ctx) {
-                return SizedBox(
-                  width: double.infinity,
-                  height: 200,
-                  child: Column(
-                    children: [
-                      TextButton(
-                        child: const Text("금리 & CPI"),
-                        onPressed: () async {
-                          Navigator.of(context).pop();
-
-                          Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const AddInterestRate()
-
-                              // FoodAddPage(
-                              //           food: Food(
-                              //             id: 1,
-                              //             date: Utils.getFormatTime(time),
-                              //             kcal: 0,
-                              //             memo: "",
-                              //             type: 0,
-                              //             image: "",
-                              //           ),
-                              ));
-                        },
-                      ),
-                      TextButton(
-                        child: const Text("운동"),
-                        onPressed: () async {
-                          // await Navigator.of(context).push(
-                          //     MaterialPageRoute(builder: (ctx) => WorkoutAddPage(
-                          //       workout: Workout(
-                          //           date: Utils.getFormatTime(time),
-                          //           time: 0,
-                          //           memo: "",
-                          //           name: "",
-                          //           image: ""
-                          //       ),
-                          //     ))
-                          // );
-                          // getHistories();
-                        },
-                      ),
-                      TextButton(
-                        child: const Text("눈바디"),
-                        onPressed: () async {
-                          // await Navigator.of(context).push(
-                          //     MaterialPageRoute(builder: (ctx) => EyeBodyAddPage(
-                          //       eyeBody: EyeBody(
-                          //           date: Utils.getFormatTime(time),
-                          //           weight: 0,
-                          //           image: ""
-                          //       ),
-                          //     ))
-                          // );
-                          // getHistories();
-                        },
-                      ),
-                    ],
-                  ),
-                );
-              });
-        },
+        elevation: 0,
+        onPressed: () => Get.bottomSheet(
+            Wrap(children: [
+              ListTile(
+                  leading: const Icon(Icons.trending_up_rounded),
+                  title: const Text('CPI'),
+                  onTap: () {
+                    Get.back();
+                    Get.toNamed('cpi');
+                  }),
+              ListTile(
+                leading: const Icon(Icons.account_balance_rounded),
+                title: const Text('금리'),
+                onTap: () {
+                  Get.back();
+                  Get.toNamed('interestRate');
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.bar_chart_rounded),
+                title: const Text('가계대출'),
+                onTap: () {
+                  Get.back();
+                  Get.toNamed('loan');
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.sailing_outlined),
+                title: const Text('수출입 동향'),
+                onTap: () {
+                  Get.back();
+                  Get.toNamed('tradeBalance');
+                },
+              ),
+              const SizedBox(height: 80),
+            ]),
+            backgroundColor: tertiaryCardColor),
         tooltip: '추가',
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(100),
+        ),
         child: const Icon(Icons.add),
       ), //
     );
@@ -132,13 +99,13 @@ class _HomePageState extends State<HomePage> {
 
   Widget getPage() {
     if (currentIndex == 0) {
-      return InterestRate();
-      // } else if (currentIndex == 1) {
-      //   return const HistoryPage();
-      // }else if(currentIndex == 2){
-      //   return getChartPage();
-      // }else if(currentIndex == 3){
-      //   return getGalleryPage();
+      return const SummaryPage();
+    } else if (currentIndex == 1) {
+      return const InterestRate();
+    } else if (currentIndex == 2) {
+      return const LoanPage();
+    } else if (currentIndex == 3) {
+      return const TradeBalancePage();
     }
     return Container();
   }
